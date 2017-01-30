@@ -1,0 +1,10 @@
+{
+  "intents": [
+    {
+      "intent": "TwitchLiveIntent"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    }
+  ]
+}
