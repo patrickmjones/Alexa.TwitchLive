@@ -1,15 +1,15 @@
 /**
  * App ID for the skill
  */
-var APP_ID 		= ""; 	// Change to Lambda application id
-var CLIENT_ID 	= ""; 	// Change to twitch client id
-var USER_ID 	= ""; 	// Change to twitch username
+var APP_ID      = "";   // Change to Lambda application id
+var CLIENT_ID   = "";   // Change to twitch client id
+var USER_ID     = "";   // Change to twitch username
 
 /**
  * The AlexaSkill prototype and helper functions
  */
-var AlexaSkill	= require('./lib/AlexaSkill');
-var Twitch 		= require('./lib/Twitch');
+var AlexaSkill  = require('./lib/AlexaSkill');
+var Twitch      = require('./lib/Twitch');
 
 /**
  * TwitchLive is a child of AlexaSkill.
@@ -19,10 +19,10 @@ var Twitch 		= require('./lib/Twitch');
  */
 var TwitchLive = function () {
     AlexaSkill.call(this, APP_ID);
-	Twitch.ClientID = CLIENT_ID;
-	Twitch.UserID = USER_ID;
+    Twitch.ClientID = CLIENT_ID;
+    Twitch.UserID = USER_ID;
 
-	this.messages = require('./lang/en');
+    this.messages = require('./lang/en');
 };
 
 // Extend AlexaSkill
@@ -31,7 +31,7 @@ TwitchLive.prototype.constructor = TwitchLive;
 
 TwitchLive.prototype.eventHandlers.onSessionStarted = function (sessionStartedRequest, session) {
     console.log("TwitchLive onSessionStarted requestId: " + sessionStartedRequest.requestId + ", sessionId: " + session.sessionId);
-	// any initialization logic goes here
+    // any initialization logic goes here
 };
 
 TwitchLive.prototype.eventHandlers.onLaunch = function (launchRequest, session, response) {
@@ -60,24 +60,24 @@ TwitchLive.prototype.intentHandlers = {
 
 function HandleTwitch(intent, session, response){
     GetTwitchFollowing(function(responseObj){
-		var say = 'The following channels are live:  <break time="0.4s"/>';
-		responseObj.streams.forEach(function(c) {
-			say += c.channel.display_name + " is playing " + c.channel.game + '.<break time="0.2s"/>';
-		});
-		
-		var speechOutput = {
+        var say = 'The following channels are live:  <break time="0.4s"/>';
+        responseObj.streams.forEach(function(c) {
+            say += c.channel.display_name + " is playing " + c.channel.game + '.<break time="0.2s"/>';
+        });
+        
+        var speechOutput = {
             speech: '<speak>' + say + '</speak>',
             type: AlexaSkill.speechOutputType.SSML
         };
-		var card = say.replace(/<break[^>]+>/g,"\n");
-		response.tellWithCard(speechOutput, "Your Live Channels", card);
-	});
+        var card = say.replace(/<break[^>]+>/g,"\n");
+        response.tellWithCard(speechOutput, "Your Live Channels", card);
+    });
 }
 
 function GetTwitchFollowing(callback) {
-	Twitch.UserGetFollowing(function(channels){
-		Twitch.GetLiveChannels(channels, callback);
-	});
+    Twitch.UserGetFollowing(function(channels){
+        Twitch.GetLiveChannels(channels, callback);
+    });
 }
 
 // Create the handler that responds to the Alexa Request.
