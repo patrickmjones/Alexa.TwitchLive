@@ -1,0 +1,7 @@
+<speak>
+The following channels are live: <break time="0.4s" />
+{{~it.streams:channel:i}}
+    {{=channel.display_name}} is playing {{=channel.game}}
+    <break time="0.2s" />
+{{~}}
+</speak>

@@ -1,0 +1,22 @@
+{
+  "name": "alexa-skill-twitch-live",
+  "version": "0.0.1",
+  "description": "An Alexa skill for communicating with Twitch.tv",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patrickmjones/Alexa.TwitchLive.git"
+  },
+  "author": "Patrick M Jones <patrick@patrickmjones.com> (https://www.patrickmjones.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/patrickmjones/Alexa.TwitchLive/issues"
+  },
+  "homepage": "https://github.com/patrickmjones/Alexa.TwitchLive#readme",
+  "dependencies": {
+    "dot": "^1.1.1"
+  }
+}

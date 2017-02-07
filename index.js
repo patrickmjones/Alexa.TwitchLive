@@ -60,17 +60,15 @@ TwitchLive.prototype.intentHandlers = {
 
 function HandleTwitch(intent, session, response){
     GetTwitchFollowing(function(responseObj){
-        var say = 'The following channels are live:  <break time="0.4s"/>';
-        responseObj.streams.forEach(function(c) {
-            say += c.channel.display_name + " is playing " + c.channel.game + '.<break time="0.2s"/>';
-        });
-        
-        var speechOutput = {
-            speech: '<speak>' + say + '</speak>',
+        var dots = require("./node_modules/dot").process({path: "./views"});
+
+        var speech = {
+            speech: dots.GetTwitchFollowingSpeech({streams:responseObj.streams}),
             type: AlexaSkill.speechOutputType.SSML
         };
-        var card = say.replace(/<break[^>]+>/g,"\n");
-        response.tellWithCard(speechOutput, "Your Live Channels", card);
+        var card = dots.GetTwitchFollowingCard({streams:responseObj.streams});
+
+        response.tellWithCard(speech, "Your Live Channels", card);
     });
 }
 
