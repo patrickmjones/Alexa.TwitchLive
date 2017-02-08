@@ -1,7 +1,7 @@
 <speak>
-The following channels are live: <break time="0.4s" />
-{{~it.streams:channel:i}}
-    {{=channel.display_name}} is playing {{=channel.game}}
+The following channels are <phoneme alphabet="ipa" ph="lɑɪv">live</phoneme>: <break time="0.4s" />
+{{~it.streams:stream:i}}
+    {{=stream.channel.display_name}} is playing {{=stream.game}}
     <break time="0.2s" />
 {{~}}
 </speak>

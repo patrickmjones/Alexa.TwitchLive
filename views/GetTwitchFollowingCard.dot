@@ -1,4 +1,4 @@
 The following channels are live: 
-{{~it.streams:channel:i}}
-    {{=channel.display_name}} is playing {{=channel.game}}
+{{~it.streams:stream:i}}
+    {{=stream.channel.display_name}} is playing {{=stream.game}}
 {{~}}
