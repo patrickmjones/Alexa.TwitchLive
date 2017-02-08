@@ -1,15 +1,9 @@
 /**
- * App ID for the skill
- */
-var APP_ID      = "";   // Change to Lambda application id
-var CLIENT_ID   = "";   // Change to twitch client id
-var USER_ID     = "";   // Change to twitch username
-
-/**
  * The AlexaSkill prototype and helper functions
  */
 var AlexaSkill  = require('./lib/AlexaSkill');
 var Twitch      = require('./lib/Twitch');
+var Config      = require('./config/config');
 
 /**
  * TwitchLive is a child of AlexaSkill.
@@ -18,9 +12,9 @@ var Twitch      = require('./lib/Twitch');
  * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript#Inheritance
  */
 var TwitchLive = function () {
-    AlexaSkill.call(this, APP_ID);
-    Twitch.ClientID = CLIENT_ID;
-    Twitch.UserID = USER_ID;
+    AlexaSkill.call(this, Config.AppID);
+    Twitch.ClientID = Config.ClientID;
+    Twitch.UserID = Config.UserID;
 
     this.messages = require('./lang/en');
 };
